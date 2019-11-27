@@ -1,102 +1,116 @@
 "use strict"
 
 let knygos = {
-        istorija:[{
-            ISBN: 9786099606309,
-            leidimoMetai: 2018,
-            pavadinimas: "BARBAROSA. Antrasis pasaulinis karas Europoje. Trečia knyga",
-            puslapiuSkaicius: 720
-        },
-        {
-            ISBN: 9789955736813,
-            leidimoMetai: 2019,
-            pavadinimas: "LIETUVOS ISTORIJA VISIEMS. II tomas",
-            puslapiuSkaicius: 384
-        },
-        {
-            ISBN: 9786094674044,
-            leidimoMetai: 2019,
-            pavadinimas: "Lietuvos kultūros istorija",
-            puslapiuSkaicius: 356
-        },
-        {
-            ISBN: 9789955267003,
-            leidimoMetai: 2019,
-            pavadinimas: "1944-ieji. Stalino pergalių kaina",
-            puslapiuSkaicius: 536
-        }
+    Istorija:[{
+        ISBN: 9786099606309,
+        Leidimo_metai: 2018,
+        Pavadinimas: "BARBAROSA. Antrasis pasaulinis karas Europoje. Trečia knyga",
+        Puslapių_skaičius: 720
+    },
+    {
+        ISBN: 9789955736813,
+        Leidimo_metai: 2019,
+        Pavadinimas: "LIETUVOS ISTORIJA VISIEMS. II tomas",
+        Puslapių_skaičius: 384
+    },
+    {
+        ISBN: 9786094674044,
+        Leidimo_metai: 2019,
+        Pavadinimas: "Lietuvos kultūros istorija",
+        Puslapių_skaičius: 356
+    },
+    {
+        ISBN: 9789955267003,
+        Leidimo_metai: 2019,
+        Pavadinimas: "1944-ieji. Stalino pergalių kaina",
+        Puslapių_skaičius: 536
+    }
     ],
-    biografijos:[{
+    Biografijos:[{
         ISBN: 9785430070021,
-        leidimoMetai: 2019,
-        pavadinimas: "Šekspyro biografija",
-        puslapiuSkaicius: 96
+        Leidimo_metai: 2019,
+        Pavadinimas: "Šekspyro biografija",
+        Puslapių_skaičius: 96
     },
-        {
-            ISBN: 9789986398325,
-            leidimoMetai: 2015,
-            pavadinimas: "Tai, kas išlieka",
-            puslapiuSkaicius: 372
-        },
-        {
-            ISBN: 9786090114797,
-            leidimoMetai: 2014,
-            pavadinimas: "Popiežius Pranciškus. Savais žodžiais",
-            puslapiuSkaicius: 208
-        },
-        {
-            ISBN: 9789955293668,
-            leidimoMetai: 2018,
-            pavadinimas: "Neįmanomybės drąsa",
-            puslapiuSkaicius: 285
-        }
+    {
+        ISBN: 9789986398325,
+        Leidimo_metai: 2015,
+        Pavadinimas: "Tai, kas išlieka",
+        Puslapių_skaičius: 372
+    },
+    {
+        ISBN: 9786090114797,
+        Leidimo_metai: 2014,
+        Pavadinimas: "Popiežius Pranciškus. Savais žodžiais",
+        Puslapių_skaičius: 208
+    },
+    {
+        ISBN: 9789955293668,
+        Leidimo_metai: 2018,
+        Pavadinimas: "Neįmanomybės drąsa",
+        Puslapių_skaičius: 285
+    }
     ],
-    fantastika:[{
+    Fantastika:[{
         ISBN: 9786090135839,
-        leidimoMetai: 2019,
-        pavadinimas: "Iškilimo šulinys. Miglos vaikai. 2 knyga",
-        puslapiuSkaicius: 880
+        Leidimo_metai: 2019,
+        Pavadinimas: "Iškilimo šulinys. Miglos vaikai. 2 knyga",
+        Puslapių_skaičius: 880
     },
-        {
-            ISBN: 9786090118191,
-            leidimoMetai: 2015,
-            pavadinimas: "SOSTŲ KARAI: Šokis su drakonais 1. Sapnai ir dulkės. Ledo ir ugnies giesmė. 5 knyga",
-            puslapiuSkaicius: 600
-        },
-        {
-            ISBN: 9789986856573,
-            leidimoMetai: 2000,
-            pavadinimas: "Sfera",
-            puslapiuSkaicius: 315
-        },
-        {
-            ISBN: 9789955344926,
-            leidimoMetai: 2014,
-            pavadinimas: "Sutiktieji",
-            puslapiuSkaicius: 416
-        }
+    {
+        ISBN: 9786090118191,
+        Leidimo_metai: 2015,
+        Pavadinimas: "SOSTŲ KARAI: Šokis su drakonais 1. Sapnai ir dulkės. Ledo ir ugnies giesmė. 5 knyga",
+        Puslapių_skaičius: 600
+    },
+    {
+        ISBN: 9789986856573,
+        Leidimo_metai: 2000,
+        Pavadinimas: "Sfera",
+        Puslapių_skaičius: 315
+    },
+    {
+        ISBN: 9789955344926,
+        Leidimo_metai: 2014,
+        Pavadinimas: "Sutiktieji",
+        Puslapių_skaičius: 416
+    }
     ]
 };
 
 for(let kategorija in knygos) {
-    console.log(kategorija + ":");
-    for(knyga of kategorija) {
-
+    console.log("///// " + kategorija.replace("_", " ") + " (" + knygos[kategorija].length + " "
+                + daugiskaitosForma(knygos[kategorija].length) + "):");
+    console.log("----------------------------------------------");
+    for(let knyga of knygos[kategorija]) {
+        for (let savybe in knyga) {
+            let notes = savybe == "Pavadinimas" ? isNew(knyga) : "";
+            console.log(savybe.replace("_", " ") + ": " + knyga[savybe] + notes);
+        }
+        console.log("----------------------------------------------");
     }
 }
 
-/*
-for(let kategorija in knygos) {
-    for(let duomenys in knygos[kategorija]) {
-        if(duomenys != "rezultatai") {
-            console.log(mokinys[duomenys]);
-        }
-        else {
-            console.log("Rezultatai:");
-            for(let rezultatai in mokinys[duomenys]) {
-                console.log(rezultatai+":"+mokinys[duomenys][rezultatai]);
-            }
-        }
+function isNew(knyga) {
+    let tittleAddition = knyga.Leidimo_metai == (new Date()).getFullYear() ? " (nauja knyga)" : "";
+    return tittleAddition;
+}
+
+function daugiskaitosForma(number) {
+    if (number % 100 > 20 || (number > 100 && number % 100 <= 9)) number %= 10;
+    switch (number) {
+        case 1:
+            return "knyga";
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            return "knygos";
+        default:
+            return "knygų";
     }
 }
-*/
